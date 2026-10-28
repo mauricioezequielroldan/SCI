@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es-AR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>SCI Bomberos – Comando de Incidentes</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Tablero de comando de incidentes para cuarteles de bomberos: operaciones, equipos con QR, croquis y PDF. Funciona sin señal.">
+<meta name="theme-color" content="#d62828">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SCI Bomberos">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+<style>
+/* ===== MR PRODUCTION · pantalla inicial ===== */
+#mr-splash{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:radial-gradient(circle at 78% 50%,rgba(214,40,40,.28),transparent 42%),radial-gradient(circle at 18% 50%,rgba(90,115,140,.18),transparent 40%),#050709;
+  color:#fff;text-align:center;cursor:pointer;transition:opacity .6s ease,visibility .6s ease;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+#mr-splash.mr-out{opacity:0;visibility:hidden;pointer-events:none}
+#mr-splash .mr-box{display:flex;flex-direction:column;align-items:center;animation:mrIn .9s ease-out both}
+#mr-splash .mr-mark{font-size:clamp(4.5rem,18vw,9rem);font-weight:900;line-height:1;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#ffffff 0%,#c9d1d9 55%,#8a96a3 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.6))}
+#mr-splash .mr-line{width:min(70vw,360px);height:3px;margin:14px 0 12px;border-radius:3px;
+  background:linear-gradient(90deg,transparent,#d62828,#ff7a3d,#d62828,transparent);box-shadow:0 0 16px rgba(214,40,40,.8)}
+#mr-splash .mr-name{font-size:clamp(1.1rem,4.5vw,1.7rem);font-weight:800;letter-spacing:.32em;text-transform:uppercase}
+#mr-splash .mr-sub{margin-top:6px;font-size:clamp(.8rem,3vw,1rem);letter-spacing:.45em;color:#aab4bf;text-transform:uppercase}
+#mr-splash .mr-copy{position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));padding:0 16px;font-size:.72rem;line-height:1.6;color:#aab4bf;letter-spacing:.06em}
+#mr-splash .mr-copy b{color:#e6ebf0;font-weight:700}
+@keyframes mrIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#mr-splash,#mr-splash .mr-box{animation:none;transition:none}}
+</style>
+</head>
+<body>
+<!-- ===== MR PRODUCTION · pantalla inicial (tocar para saltear) ===== -->
+<div id="mr-splash" aria-label="MR Production">
+  <div class="mr-box">
+    <div class="mr-mark">MR</div>
+    <div class="mr-line"></div>
+    <div class="mr-name">Production</div>
+    <div class="mr-sub">Mauricio Roldan</div>
+  </div>
+  <div class="mr-copy">
+    <b>© 2026 MR Production. Todos los derechos reservados.</b><br>
+    Una creación de Mauricio Roldan
+  </div>
+</div>
+
+<div id="app"></div>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"></div>
+<div id="toast" class="hidden" role="status" aria-live="polite"></div>
+<noscript>Esta aplicación necesita JavaScript.</noscript>
+<script src="js/pdf.js"></script>
+<script src="js/report.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/qr.js"></script>
+<script src="js/map.js"></script>
+<script src="js/core.js"></script>
+<script src="js/cuartel.js"></script>
+<script src="js/op.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/general.js"></script>
+<script src="js/equipos.js"></script>
+<script src="js/envio.js"></script>
+<script src="js/team.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/main.js"></script>
+<script src="js/beta.js"></script>
+<script src="js/croquis-mapa.js"></script>
+<script src="js/nube.js"></script>
+<script>
+/* MR Production: se muestra 2,6 s y desaparece sola (o al tocarla) */
+(function(){
+  var s=document.getElementById('mr-splash'); if(!s) return;
+  var done=false;
+  function hide(){ if(done) return; done=true; s.classList.add('mr-out'); setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); },700); }
+  s.addEventListener('click',hide);
+  setTimeout(hide,2600);
+})();
+</script>
+</body>
+</html>
