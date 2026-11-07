@@ -1,0 +1,16 @@
+{
+  "name": "SCI Bomberos – Comando de Incidentes",
+  "short_name": "SCI Bomberos",
+  "description": "Tablero de comando de incidentes para cuarteles de bomberos. Funciona sin conexión.",
+  "lang": "es-AR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e1318",
+  "theme_color": "#d62828",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
